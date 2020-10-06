@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class Level01Controller : MonoBehaviour
 {
     [SerializeField] Text _currentScoreTextView;
-
+    [SerializeField] GameObject PauseMenu = null;
+    static public bool isPaused = false;
     int _currentScore;
     private void Update()
     {
@@ -17,7 +18,7 @@ public class Level01Controller : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            ExitLevel();
+            pauseMenu();
         }
     }
     public void IncreaseScore(int scoreIncrease)
@@ -38,6 +39,23 @@ public class Level01Controller : MonoBehaviour
             PlayerPrefs.SetInt("HighScore", _currentScore);
             Debug.Log("New high score: " + _currentScore);
         }
+        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene("MainMenu");
+    }
+    public void pauseMenu()
+    {
+        if (PauseMenu != null)
+        {
+            isPaused = !isPaused;
+            if (isPaused)
+            {
+                Cursor.lockState = CursorLockMode.None;
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+            PauseMenu.SetActive(isPaused);
+        }
     }
 }

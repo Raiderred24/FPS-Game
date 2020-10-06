@@ -6,7 +6,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance = null;
-
+    int playSong;
     AudioSource _audioSource;
     private void Awake()
     {
@@ -27,7 +27,11 @@ public class AudioManager : MonoBehaviour
     }
     public void PlaySong(AudioClip clip)
     {
-        _audioSource.clip = clip;
-        _audioSource.Play();
+        if (playSong == 0)
+        {
+            _audioSource.clip = clip;
+            _audioSource.Play();
+            playSong = 1;
+        }
     }
 }
