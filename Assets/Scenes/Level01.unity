@@ -1223,8 +1223,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1209178443}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.76, y: -0.55, z: 0.09}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.76, y: -0.41, z: 0.09}
+  m_LocalScale: {x: 0.5647204, y: 0.5647204, z: 0.5647204}
   m_Children: []
   m_Father: {fileID: 623826338}
   m_RootOrder: 0
@@ -6497,6 +6497,7 @@ GameObject:
   - component: {fileID: 1998593652}
   - component: {fileID: 1998593651}
   - component: {fileID: 1998593653}
+  - component: {fileID: 1998593654}
   m_Layer: 0
   m_Name: FirstPersonPlayer
   m_TagString: Untagged
@@ -6562,6 +6563,21 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &1998593654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998593650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b455f1df403d43b44b6cd4caf7db04f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraController: {fileID: 623826337}
+  rayOrigin: {fileID: 1209178444}
+  shootDistance: 10
 --- !u!1 &2029391721
 GameObject:
   m_ObjectHideFlags: 0
