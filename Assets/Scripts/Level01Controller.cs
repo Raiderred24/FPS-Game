@@ -12,10 +12,6 @@ public class Level01Controller : MonoBehaviour
     int _currentScore;
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            IncreaseScore(5);
-        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             pauseMenu();

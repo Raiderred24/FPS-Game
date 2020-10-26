@@ -12,7 +12,10 @@ public class EnemyShooter : MonoBehaviour
         health -= damageToTake;
         Debug.Log(health + " health remaining");
 
-        // Death check
-
+        // Death check Needed
+        if (health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

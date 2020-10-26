@@ -22,10 +22,4 @@ public class MainMenuController : MonoBehaviour
             AudioManager.Instance.PlaySong(_startingSong);
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

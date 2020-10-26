@@ -31,7 +31,7 @@ public class FireWeapon : MonoBehaviour
         // Do the raycast
         if(Physics.Raycast(rayOrigin.position, rayDirection, out objectHit, shootDistance, hitLayers))
         {
-            // Code hit object /Graffitti tag?
+            // Code hit object
             Debug.Log("You hit the " + objectHit.transform.gameObject.name);
             if (objectHit.transform.tag == "Enemy")
             {
@@ -42,14 +42,14 @@ public class FireWeapon : MonoBehaviour
                 EnemyShooter enemyShooter = objectHit.transform.gameObject.GetComponent<EnemyShooter>();
                 if (enemyShooter != null)
                 {
+                    Debug.Log("enemy took damage");
                     enemyShooter.TakeDamage(weaponDamage);
                 }
             }
         }
         else 
         {
-            // Code misses
-            Debug.Log("You Miss");   
+            Debug.Log("You Missed");   
         }
     }
 }
