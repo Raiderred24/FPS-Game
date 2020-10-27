@@ -28,4 +28,8 @@ public class MainMenuController : MonoBehaviour
         int highScore = PlayerPrefs.GetInt("HighScore");
         _highScoreTextView.text = highScore.ToString();
     }
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
