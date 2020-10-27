@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
+    public AudioSource Death;
 
     Vector3 velocity;
     bool isGrounded;
@@ -25,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Time.timeScale = 1;
     }
 
     // Update is called once per frame
@@ -70,11 +71,13 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
-    public void healthBar() 
+    public void healthBar(int Damage) 
     {
-        HealthBar.value = HealthBar.value - 1;
+        HealthBar.value = HealthBar.value - Damage;
+        this.GetComponent<AudioSource>().Play();
         if (HealthBar.value <= 0)
         {
+            Death.Play();
             SceneManager.LoadScene("MainMenu");
         }
     }

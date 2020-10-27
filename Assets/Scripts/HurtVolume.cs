@@ -8,7 +8,7 @@ public class HurtVolume : MonoBehaviour
     {
         if(other.gameObject.name == "FirstPersonPlayer")
         {
-            other.GetComponent<PlayerMovement>().healthBar();
+            other.GetComponent<PlayerMovement>().healthBar(1);
         }
     }
 }

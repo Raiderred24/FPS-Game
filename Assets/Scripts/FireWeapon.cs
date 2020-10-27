@@ -11,6 +11,8 @@ public class FireWeapon : MonoBehaviour
     [SerializeField] GameObject visualFeedbackObject;
     [SerializeField] int weaponDamage = 50;
     [SerializeField] LayerMask hitLayers;
+    [SerializeField] ParticleSystem feedbackParticles;
+    [SerializeField] AudioSource Gunshot;
 
     RaycastHit objectHit; // Stores info on Raycast hit
     private void Update()
@@ -24,6 +26,7 @@ public class FireWeapon : MonoBehaviour
     // Fire the weapon using a Raycast
     void Shoot()
     {
+        Gunshot.Play();
         // Calculate direction of ray
         Vector3 rayDirection = cameraController.transform.forward;
         // Cast a debug ray
@@ -36,8 +39,11 @@ public class FireWeapon : MonoBehaviour
             if (objectHit.transform.tag == "Enemy")
             {
                 Debug.Log("Deal Damage");
+                
                 // Visual feedback
-                visualFeedbackObject.transform.position = objectHit.point;
+                //visualFeedbackObject.transform.position = objectHit.point;
+                feedbackParticles.transform.position = objectHit.point;
+                feedbackParticles.Emit(10);
                 // Apply damage if target is an enemy
                 EnemyShooter enemyShooter = objectHit.transform.gameObject.GetComponent<EnemyShooter>();
                 if (enemyShooter != null)
@@ -46,6 +52,7 @@ public class FireWeapon : MonoBehaviour
                     enemyShooter.TakeDamage(weaponDamage);
                 }
             }
+
         }
         else 
         {

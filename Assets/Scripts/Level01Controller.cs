@@ -8,8 +8,14 @@ public class Level01Controller : MonoBehaviour
 {
     [SerializeField] Text _currentScoreTextView;
     [SerializeField] GameObject PauseMenu = null;
+    [SerializeField] Text HighScoreText;
+    [SerializeField] Text ScoreText;
     static public bool isPaused = false;
     int _currentScore;
+    private void Start()
+    {
+        _currentScoreTextView.text = "Current Score: " + _currentScore.ToString();
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -27,14 +33,6 @@ public class Level01Controller : MonoBehaviour
     }
     public void ExitLevel()
     {
-        // Compare scores
-        int highScore = PlayerPrefs.GetInt("HighScore");
-        if (_currentScore > highScore)
-        {
-            // Save current score as new high score
-            PlayerPrefs.SetInt("HighScore", _currentScore);
-            Debug.Log("New high score: " + _currentScore);
-        }
         Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene("MainMenu");
     }
@@ -53,5 +51,22 @@ public class Level01Controller : MonoBehaviour
             }
             PauseMenu.SetActive(isPaused);
         }
+    }
+    public void winGame()
+    {
+        int highScore = PlayerPrefs.GetInt("HighScore");
+        if (_currentScore > highScore || highScore == 0)
+        {
+            highScore = _currentScore;
+            // Save current score as new high score
+            PlayerPrefs.SetInt("HighScore", _currentScore);
+            Debug.Log("New high score: " + _currentScore);
+        }
+        HighScoreText.text = "High Score: " + highScore;
+        ScoreText.text = "Score: " + _currentScore;
+    }
+    public void increaseScore (int amount)
+    {
+        _currentScore += amount;
     }
 }

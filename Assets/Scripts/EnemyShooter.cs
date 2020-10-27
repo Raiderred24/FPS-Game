@@ -5,16 +5,17 @@ using UnityEngine;
 public class EnemyShooter : MonoBehaviour
 {
     // Enemy fires projectiles
-
+    [SerializeField] GameObject levelController;
     int health = 100;
     public void TakeDamage(int damageToTake)
     {
         health -= damageToTake;
         Debug.Log(health + " health remaining");
 
-        // Death check Needed
+        
         if (health <= 0)
         {
+            levelController.GetComponent<Level01Controller>().IncreaseScore(100);
             Destroy(this.gameObject);
         }
     }
